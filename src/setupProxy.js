@@ -1,6 +1,8 @@
 // 必须使用cjs
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
+
+// 服务器文件地址/Users/shenhaoyi/Desktop/learn/learn-react/react全家桶资料/06_其他
 module.exports = function (app) {
   app.use(
     createProxyMiddleware('/api1', {
