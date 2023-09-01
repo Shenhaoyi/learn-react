@@ -8,45 +8,57 @@ export default class GithubSearch extends Component {
     keyword: '',
     list: [],
   };
+
   handleChange = (keyword) => {
     this.setState({
       keyword,
     });
   };
+
+  updateList = (data = []) => {
+    const list = data.map((item) => {
+      const { login: name, avatar_url: avatarUrl } = item;
+      return {
+        name,
+        avatarUrl,
+      };
+    });
+    this.setState({
+      list,
+    });
+  };
+
+  // 使用fetch请求
+  handleSearchFetch = async () => {
+    const url = `/github/users?q=${this.state.keyword}`;
+    try {
+      const response = await fetch(url); // 请求是否触达服务端
+      const data = await response.json();
+      this.updateList(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   handleSearch = async () => {
     const url = `/github/users?q=${this.state.keyword}`;
     // 发请求
-    console.log('shen log: ', this.state.keyword);
-    if (!url) return;
-
-    axios({
-      method: 'get',
-      url,
-    }).then(
-      (response) => {
-        console.log(response);
-        const list = response?.data?.map?.((item) => {
-          const { login: name, avatar_url: avatarUrl } = item;
-          return {
-            name,
-            avatarUrl,
-          };
-        });
-        this.setState({
-          list: list || [],
-        });
-      },
-      (error) => {
-        console.error(error);
-      },
-    );
+    try {
+      const response = await axios({
+        method: 'get',
+        url,
+      });
+      this.updateList(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
   render() {
     return (
       <>
         <Search
           handleChange={this.handleChange}
-          handleSearch={this.handleSearch}
+          handleSearch={this.handleSearchFetch}
         ></Search>
         <List keyword={this.state.keyword} list={this.state.list}></List>
       </>
