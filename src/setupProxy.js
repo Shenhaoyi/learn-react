@@ -19,5 +19,12 @@ module.exports = function (app) {
         '^/api2': '',
       },
     }),
+    createProxyMiddleware('/github', {
+      target: 'https://api.github.com/',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/github': '',
+      },
+    }),
   );
 };
