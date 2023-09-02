@@ -15,7 +15,7 @@ export default class App extends Component {
           &nbsp;
           <MyNavLink to="/axios">测试axios</MyNavLink>
           &nbsp;
-          <MyNavLink to="/github-search">Hello</MyNavLink>
+          <MyNavLink to="/github-search">搜索github用户</MyNavLink>
         </div>
         <br />
         <Switch>
