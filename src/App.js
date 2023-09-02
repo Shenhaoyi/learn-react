@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import Hello from './components/Hello';
-import TestAxios from './components/TestAxios';
-import GithubSearch from './components/GithubSearch';
+import Hello from './pages/Hello';
+import TestAxios from './pages/TestAxios';
+import GithubSearch from './pages/GithubSearch';
 import { Link, Route } from 'react-router-dom';
 
 export default class App extends Component {
