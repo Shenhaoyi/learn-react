@@ -1,42 +1,57 @@
 import React, { Component } from 'react';
+import store from '../../redux/store';
 
 export default class Count extends Component {
-  state = { count: 0 };
+  selectRef = React.createRef();
+
+  componentDidMount() {
+    // 订阅store数据更新的回调
+    store.subscribe(() => {
+      // this.render(); // 不管用
+      this.setState({});
+    });
+  }
+
+  getSelectValue = () => {
+    return Number(this.selectRef.current.value);
+  };
 
   //加法
   increment = () => {
-    const { value } = this.selectNumber;
-    const { count } = this.state;
-    this.setState({ count: count + value * 1 });
+    store.dispatch({
+      type: 'add',
+      data: this.getSelectValue(),
+    });
   };
   //减法
   decrement = () => {
-    const { value } = this.selectNumber;
-    const { count } = this.state;
-    this.setState({ count: count - value * 1 });
+    store.dispatch({
+      type: 'minus',
+      data: this.getSelectValue(),
+    });
   };
   //奇数再加
   incrementIfOdd = () => {
-    const { value } = this.selectNumber;
-    const { count } = this.state;
-    if (count % 2 !== 0) {
-      this.setState({ count: count + value * 1 });
+    if (store.getState() % 2 !== 0) {
+      store.dispatch({
+        type: 'add',
+        data: this.getSelectValue(),
+      });
     }
   };
   //异步加
   incrementAsync = () => {
-    const { value } = this.selectNumber;
-    const { count } = this.state;
-    setTimeout(() => {
-      this.setState({ count: count + value * 1 });
-    }, 500);
+    store.dispatch({
+      type: 'add',
+      data: this.getSelectValue(),
+    });
   };
 
   render() {
     return (
       <div>
-        <h1>当前求和为：{this.state.count}</h1>
-        <select ref={(c) => (this.selectNumber = c)}>
+        <h1>当前求和为：{store.getState()}</h1>
+        <select ref={this.selectRef}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
