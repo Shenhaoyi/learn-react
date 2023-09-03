@@ -5,6 +5,7 @@ import Route1 from './Route1';
 import Route2 from './Route2';
 import Route3 from './Route3';
 import { Button } from 'antd';
+import NoRoute from './NoRoute';
 
 const number = Math.random();
 const name = 'shen';
@@ -80,6 +81,10 @@ export default class NestedRoutes extends Component {
           </Button>
         </div>
         <br />
+        <div>
+          {/* 一般组件里面进行路由跳转 */}
+          <NoRoute></NoRoute>
+        </div>
         <Switch>
           <Route
             path="/nested-routes/route1/:number/:name"
