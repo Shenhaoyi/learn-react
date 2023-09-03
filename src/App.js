@@ -5,6 +5,7 @@ import GithubSearch from './pages/GithubSearch';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import MyNavLink from './components/MyNavLink';
 import NestedRoutes from './pages/NestedRoutes';
+import TestRedux from './pages/TestRedux';
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,8 @@ export default class App extends Component {
           <MyNavLink to="/github-search">搜索github用户</MyNavLink>
           &nbsp;
           <MyNavLink to="/nested-routes">嵌套路由</MyNavLink>
+          &nbsp;
+          <MyNavLink to="/redux">测试redux</MyNavLink>
         </div>
         <br />
         <Switch>
@@ -26,6 +29,7 @@ export default class App extends Component {
           <Route path="/axios" component={TestAxios} />
           <Route path="/github-search" component={GithubSearch} />
           <Route path="/nested-routes" component={NestedRoutes} />
+          <Route path="/redux" component={TestRedux} />
           {/* 如果当前的路径到Redirect还没有匹配到，就重定向（后面如果再写Route就不会生效了） */}
           <Redirect to="/hello" />
         </Switch>
