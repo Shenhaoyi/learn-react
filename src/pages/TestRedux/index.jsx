@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import store from '../../redux/store';
+import ACTION_TYPES from '../../redux/const';
+import countActionCreator from '../../redux/countAction';
 
 export default class Count extends Component {
   selectRef = React.createRef();
@@ -18,33 +20,21 @@ export default class Count extends Component {
 
   //加法
   increment = () => {
-    store.dispatch({
-      type: 'add',
-      data: this.getSelectValue(),
-    });
+    store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
   };
   //减法
   decrement = () => {
-    store.dispatch({
-      type: 'minus',
-      data: this.getSelectValue(),
-    });
+    store.dispatch(countActionCreator[ACTION_TYPES.MINUS](this.getSelectValue()));
   };
   //奇数再加
   incrementIfOdd = () => {
     if (store.getState() % 2 !== 0) {
-      store.dispatch({
-        type: 'add',
-        data: this.getSelectValue(),
-      });
+      store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
     }
   };
   //异步加
   incrementAsync = () => {
-    store.dispatch({
-      type: 'add',
-      data: this.getSelectValue(),
-    });
+    store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
   };
 
   render() {
