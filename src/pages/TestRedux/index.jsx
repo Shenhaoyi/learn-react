@@ -4,13 +4,13 @@ import store from '../../redux/store';
 export default class Count extends Component {
   selectRef = React.createRef();
 
-  componentDidMount() {
-    // 订阅store数据更新的回调
-    store.subscribe(() => {
-      // this.render(); // 虽然执行了，但是页面不更新？
-      this.setState({});
-    });
-  }
+  // componentDidMount() {
+  //   // 订阅store数据更新的回调
+  //   store.subscribe(() => {
+  //     // this.render(); // 虽然执行了，但是页面不更新？
+  //     this.setState({});
+  //   });
+  // }
 
   getSelectValue = () => {
     return Number(this.selectRef.current.value);
