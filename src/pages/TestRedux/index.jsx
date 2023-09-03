@@ -7,7 +7,7 @@ export default class Count extends Component {
   componentDidMount() {
     // 订阅store数据更新的回调
     store.subscribe(() => {
-      // this.render(); // 不管用
+      // this.render(); // 虽然执行了，但是页面不更新？
       this.setState({});
     });
   }
