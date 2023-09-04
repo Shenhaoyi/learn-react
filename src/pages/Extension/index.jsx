@@ -5,7 +5,7 @@ import MyNavLink from '../../components/MyNavLink';
 import { Spin } from 'antd';
 const LazyLoad = lazy(() => import('./LazyLoad'));
 
-export default class NestedRoutes extends Component {
+export default class Extension extends Component {
   render() {
     return (
       <>
