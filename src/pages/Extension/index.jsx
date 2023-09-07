@@ -14,7 +14,7 @@ export default class Extension extends Component {
         <div>
           <MyNavLink to="/extension/set-state">setState</MyNavLink>
           &nbsp;
-          <MyNavLink to="/extension/lazy-load">setState</MyNavLink>
+          <MyNavLink to="/extension/lazy-load">lazy load</MyNavLink>
           &nbsp;
         </div>
         <br />
