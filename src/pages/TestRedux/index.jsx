@@ -32,10 +32,10 @@ export default class Count extends Component {
       store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
     }
   };
-  //异步加
-  incrementAsync = () => {
-    store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
-  };
+  //异步加（未实现，需要安装redux-thunk）
+  // incrementAsync = () => {
+  //   store.dispatch(countActionCreator[ACTION_TYPES.ADD](this.getSelectValue()));
+  // };
 
   render() {
     return (
@@ -50,7 +50,7 @@ export default class Count extends Component {
         <button onClick={this.increment}>+</button>&nbsp;
         <button onClick={this.decrement}>-</button>&nbsp;
         <button onClick={this.incrementIfOdd}>当前求和为奇数再加</button>&nbsp;
-        <button onClick={this.incrementAsync}>异步加</button>&nbsp;
+        {/* <button onClick={this.incrementAsync}>异步加</button>&nbsp; */}
       </div>
     );
   }
