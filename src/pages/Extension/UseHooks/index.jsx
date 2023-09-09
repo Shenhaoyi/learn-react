@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -26,10 +26,25 @@ export default function UseHooks() {
     setCount((oldValue) => oldValue + 1); // 使用函数
   };
 
+  const [inputValue, setInputValue] = useState('');
+  // const handleChange = (e) => {
+  //   setInputValue(e.target.value)
+  // }
+  // 使用useRef
+  const inputRef = useRef();
+  const handleChange = () => {
+    setInputValue(inputRef.current.value);
+  };
+
   return (
     <div>
       <div>count: {count}</div>
       <button onClick={add}>点我+1</button>
+      <hr></hr>
+      <div>
+        <input ref={inputRef} onChange={handleChange} />
+        您输入的内容是:{inputValue}
+      </div>
     </div>
   );
 }
