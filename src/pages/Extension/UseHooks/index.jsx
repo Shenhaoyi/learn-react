@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MyContext } from './context';
 import B from './B';
+import Pure from './Pure';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -54,6 +55,9 @@ export default function UseHooks() {
       <MyContext.Provider value={{ count }}>
         <B></B>
       </MyContext.Provider>
+      <hr></hr>
+      PureComponent
+      <Pure></Pure>
     </div>
   );
 }
