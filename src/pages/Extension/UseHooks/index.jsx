@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { MyContext } from './context';
+import B from './B';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -41,10 +43,17 @@ export default function UseHooks() {
       <div>count: {count}</div>
       <button onClick={add}>点我+1</button>
       <hr></hr>
+      useRef
       <div>
         <input ref={inputRef} onChange={handleChange} />
         您输入的内容是:{inputValue}
       </div>
+      <hr></hr>
+      createContext
+      {/* key必须是value */}
+      <MyContext.Provider value={{ count }}>
+        <B></B>
+      </MyContext.Provider>
     </div>
   );
 }
