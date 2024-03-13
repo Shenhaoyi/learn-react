@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { MyContext } from '../context';
 
 export default function B() {
@@ -6,6 +6,7 @@ export default function B() {
     <div style={{ margin: '20px', border: '1px solid red' }}>
       我是B组件
       <C></C>
+      <C2></C2>
       <D></D>
     </div>
   );
@@ -22,6 +23,17 @@ function C() {
   );
 }
 
+// 函数式组件接收祖先属性(使用 useContext)
+function C2() {
+  const { count } = useContext(MyContext);
+  return (
+    <div style={{ margin: '20px', border: '1px solid green' }}>
+      我是函数孙子组件，我爷爷的count是(useContext)：
+      {count}
+    </div>
+  );
+}
+
 // 类式组件接收祖先属性
 class D extends Component {
   // 声明接收context
@@ -30,7 +42,8 @@ class D extends Component {
     const { count } = this.context;
     return (
       <div style={{ margin: '20px', border: '1px solid black' }}>
-        我是类孙子组件，我爷爷的count是：{count}
+        我是类孙子组件，我爷爷的count是：
+        {count}
       </div>
     );
   }
