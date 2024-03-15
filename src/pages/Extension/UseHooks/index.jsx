@@ -4,6 +4,7 @@ import B from './B';
 import Pure from './Pure';
 import UseReducer from './UseReducer';
 import { Tabs } from 'antd';
+import Immer from './Immer';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -91,6 +92,15 @@ export default function UseHooks() {
       children: (
         <>
           <UseReducer></UseReducer>
+        </>
+      ),
+    },
+    {
+      key: '6',
+      label: '使用immer',
+      children: (
+        <>
+          <Immer></Immer>
         </>
       ),
     },
