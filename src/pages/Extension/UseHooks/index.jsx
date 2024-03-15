@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MyContext } from './context';
 import B from './B';
 import Pure from './Pure';
+import UseReducer from './UseReducer';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -58,6 +59,9 @@ export default function UseHooks() {
       <hr></hr>
       PureComponent
       <Pure></Pure>
+      <hr></hr>
+      useReducer
+      <UseReducer></UseReducer>
     </div>
   );
 }
