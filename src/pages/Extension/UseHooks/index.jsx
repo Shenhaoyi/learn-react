@@ -3,6 +3,7 @@ import { MyContext } from './context';
 import B from './B';
 import Pure from './Pure';
 import UseReducer from './UseReducer';
+import { Tabs } from 'antd';
 
 export default function UseHooks() {
   const [count, setCount] = useState(0);
@@ -40,28 +41,60 @@ export default function UseHooks() {
     setInputValue(inputRef.current.value);
   };
 
-  return (
-    <div>
-      <div>count: {count}</div>
-      <button onClick={add}>点我+1</button>
-      <hr></hr>
-      useRef
-      <div>
-        <input ref={inputRef} onChange={handleChange} />
-        您输入的内容是:{inputValue}
-      </div>
-      <hr></hr>
-      createContext
-      {/* key必须是value */}
-      <MyContext.Provider value={{ count }}>
-        <B></B>
-      </MyContext.Provider>
-      <hr></hr>
-      PureComponent
-      <Pure></Pure>
-      <hr></hr>
-      useReducer
-      <UseReducer></UseReducer>
-    </div>
-  );
+  const items = [
+    {
+      key: '1',
+      label: 'useState',
+      children: (
+        <>
+          <div>count: {count}</div>
+          <button onClick={add}>点我+1</button>
+        </>
+      ),
+    },
+    {
+      key: '2',
+      label: 'useRef',
+      children: (
+        <>
+          <div>
+            <input ref={inputRef} onChange={handleChange} />
+            您输入的内容是:{inputValue}
+          </div>
+        </>
+      ),
+    },
+    {
+      key: '3',
+      label: 'createContext',
+      children: (
+        <>
+          {/* key必须是value */}
+          <MyContext.Provider value={{ count }}>
+            <B></B>
+          </MyContext.Provider>
+        </>
+      ),
+    },
+    {
+      key: '4',
+      label: 'PureComponent',
+      children: (
+        <>
+          <Pure></Pure>
+        </>
+      ),
+    },
+    {
+      key: '5',
+      label: 'useReducer',
+      children: (
+        <>
+          <UseReducer></UseReducer>
+        </>
+      ),
+    },
+  ];
+
+  return <Tabs defaultActiveKey="1" items={items} />;
 }
