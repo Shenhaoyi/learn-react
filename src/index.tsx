@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import store from './redux/store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 const render = () => {
   root.render(
     // 帮忙检查代码中不太合理的地方
