@@ -3,7 +3,7 @@ import { produce } from 'immer';
 import { Button } from 'antd';
 
 /* 使用 immer 修改复杂对象 */
-export default function Immer() {
+const Immer: React.FC = () => {
   const [obj, setObj] = useState({
     a: {
       c: {
@@ -27,4 +27,6 @@ export default function Immer() {
       <div>{JSON.stringify(obj)}</div>
     </div>
   );
-}
+};
+
+export default Immer;
